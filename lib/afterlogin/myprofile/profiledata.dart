@@ -13,8 +13,36 @@ class UserData extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
+            if (data['description'] == null) {
+              return Column(
+                children: [
+                  Text(
+                    'Nazwa: ${data['name']}',
+                    style: TextStyle(fontFamily: 'Caslon', fontSize: 30),
+                  ),
+                  Text(
+                    'Urodziny: ${data['birthdate']}',
+                    style: TextStyle(fontFamily: 'Caslon', fontSize: 30),
+                  ),
+                  Text(
+                    'Opis: ',
+                    style: TextStyle(fontFamily: 'Caslon', fontSize: 30),
+                  )
+                ],
+              );
+            }
             return Column(
-              children: [Text('Nazwa: ${data['name']}'), Text('Urodziny: ${data['birthdate']}'), Text('Opis: ${data['description']}')],
+              children: [
+                Text(
+                  'Nazwa: ${data['name']}',
+                  style: TextStyle(fontFamily: 'Caslon', fontSize: 30),
+                ),
+                Text(
+                  'Urodziny: ${data['birthdate']}',
+                  style: TextStyle(fontFamily: 'Caslon', fontSize: 30),
+                ),
+                Text('Opis: ${data['description']}', style: TextStyle(fontFamily: 'Caslon', fontSize: 30)),
+              ],
             );
           }
           return Text('Ładowanie');

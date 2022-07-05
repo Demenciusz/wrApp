@@ -84,31 +84,45 @@ class _MainMenuPageState extends State<MainMenuPage> {
   Widget build(BuildContext context) {
     double size = MediaQuery.of(context).size.width;
     return Scaffold(
+        resizeToAvoidBottomInset: true,
         appBar: AppBar(),
-        body: Center(
-          child: FutureBuilder<List<Video>>(
-              future: makeList(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  List<Video> video = snapshot.data!;
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: SizedBox(
-                      child: ListView.separated(
-                        separatorBuilder: (context, index) => SizedBox(
-                          width: 20,
-                        ),
-                        scrollDirection: Axis.horizontal,
-                        itemCount: video.length,
-                        itemBuilder: (co, index) {
-                          return min(video[index].getLink(), video[index].getThumnbailUrl(), video[index].getTitle(), size);
-                        },
-                      ),
-                    ),
-                  );
-                } else
-                  return const CircularProgressIndicator();
-              }),
+        body: Container(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                  height: size * 0.9,
+                  child: FutureBuilder<List<Video>>(
+                      future: makeList(),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
+                          List<Video> video = snapshot.data!;
+                          return Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: SizedBox(
+                              child: ListView.separated(
+                                separatorBuilder: (context, index) => SizedBox(
+                                  width: 20,
+                                ),
+                                scrollDirection: Axis.horizontal,
+                                itemCount: video.length,
+                                itemBuilder: (co, index) {
+                                  return min(video[index].getLink(), video[index].getThumnbailUrl(), video[index].getTitle(), size);
+                                },
+                              ),
+                            ),
+                          );
+                        } else
+                          return const CircularProgressIndicator();
+                      }),
+                ),
+                Text(
+                  des,
+                  style: TextStyle(fontSize: 20, fontFamily: 'Caslon'),
+                )
+              ],
+            ),
+          ),
         ),
         drawer: appDrawer());
   }

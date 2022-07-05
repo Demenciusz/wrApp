@@ -46,6 +46,8 @@ dependencies:
   html: ^0.15.0
   firebase_storage: ^10.2.18
   file_picker: ^4.6.1
+  image_picker: ^0.8.5+3
+  image_cropper: ^2.0.3
   
 
 dev_dependencies:

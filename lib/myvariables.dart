@@ -36,6 +36,8 @@ const String birthDate = 'Data urodzenia';
 //MAIN MENU
 const String newVideos = 'Najnowsze odcinki:';
 const double fontSize = 40;
+const String des =
+    'Nazywam się Michał Bańka, ale w odmętach polskiego fandomu znany jestem jako Baniak. Od ponad 20 lat moją wielką pasją są gry fabularne, czyli RPG. W październiku 2013 roku postanowiłem zacząć dzielić się swoją wiedzą, doświadczeniem i pomysłami z polskimi erpegowcami, co zaowocowało kanałem filmowym o nazwie "Baniak Baniaka". Szybko stał się najczęściej odwiedzanym kanałem poświęconym wyłącznie grom fabularnym w Polsce, zdobywając tysiące Fanów, którzy zaproponowali mi rozpoczęcie odwlekanej akcji Patronite. We wrześniu 2017 uruchomiłem możliwość stałego wspierania mnie, co niezwykle szybko przekształciło się w połączenie pasji ze stałą pracą.';
 //THROWDICE
 const List<String> diceType = ['D4', 'D6', 'D10', 'D12', 'D20', 'D100'];
 const List<int> numberOfDices = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];

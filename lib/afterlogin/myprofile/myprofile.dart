@@ -43,48 +43,49 @@ class _MyProfileState extends State<MyProfile> {
 
     return Scaffold(
       appBar: AppBar(),
-      body: Center(
-        child: Container(
-            child: Column(
-          children: [
-            FutureBuilder(
-                future: photoStorage.displayPhoto(uid),
-                builder: ((context, AsyncSnapshot<String> snapshot) {
-                  if ((snapshot.connectionState == ConnectionState.done || snapshot.hasData) && snapshot.data != '1') {
-                    return Image.network(
-                      snapshot.data!,
-                      width: 100,
-                    );
-                  } else if (snapshot.data == '1') {
-                    return Image.asset(
-                      'assets/photos/dice.png',
-                      width: 100,
-                    );
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              FutureBuilder(
+                  future: photoStorage.displayPhoto(uid),
+                  builder: ((context, AsyncSnapshot<String> snapshot) {
+                    if ((snapshot.connectionState == ConnectionState.done || snapshot.hasData) && snapshot.data != '1') {
+                      return Image.network(
+                        snapshot.data!,
+                        width: 100,
+                      );
+                    } else if (snapshot.data == '1') {
+                      return Image.asset(
+                        'assets/photos/dice.png',
+                        width: 100,
+                      );
+                    }
+                    return CircularProgressIndicator();
+                  })),
+              TextButton(
+                child: Text('dd'),
+                onPressed: () async {
+                  final profilePhoto =
+                      await FilePicker.platform.pickFiles(allowMultiple: false, type: FileType.custom, allowedExtensions: ['png', 'jpg']);
+                  if (profilePhoto == null) {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('nie ma')));
+                  } else {
+                    final path = profilePhoto.files.single.path;
+                    photoStorage.uploadPhoto(path!, uid);
+                    await Future.delayed(Duration(seconds: 2));
+                    setState(() {});
                   }
-                  return CircularProgressIndicator();
-                })),
-            TextButton(
-              child: Text('dd'),
-              onPressed: () async {
-                final profilePhoto =
-                    await FilePicker.platform.pickFiles(allowMultiple: false, type: FileType.custom, allowedExtensions: ['png', 'jpg']);
-                if (profilePhoto == null) {
-                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('nie ma')));
-                } else {
-                  final path = profilePhoto.files.single.path;
-                  photoStorage.uploadPhoto(path!, uid);
-                  await Future.delayed(Duration(seconds: 2));
-                  setState(() {});
-                }
-              },
-            ),
-            FutureBuilder(
-                future: displayData(uid),
-                builder: (context, snapshot) {
-                  return UserData(docId: snapshot.data.toString());
-                })
-          ],
-        )),
+                },
+              ),
+              FutureBuilder(
+                  future: displayData(uid),
+                  builder: (context, snapshot) {
+                    return UserData(docId: snapshot.data.toString());
+                  })
+            ],
+          ),
+        ),
       ),
       drawer: appDrawer(),
     );
