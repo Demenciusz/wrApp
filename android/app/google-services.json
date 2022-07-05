@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "533724276715",
+    "firebase_url": "https://wrbase-59fd4-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "wrbase-59fd4",
+    "storage_bucket": "wrbase-59fd4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:533724276715:android:2ec4b6040b2b98ec2bdbae",
+        "android_client_info": {
+          "package_name": "com.example.wr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "533724276715-evkc0pf134kcda19ngeunv2b91ndvbfv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGcYiRs1dBT0jABghZM4MwEqlE-t3gSOY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "533724276715-evkc0pf134kcda19ngeunv2b91ndvbfv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "533724276715-56g8q713947s7g9aukrlhr39l8unhlas.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.wr"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
