@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wr/afterlogin/comments.dart';
+import 'package:wr/afterlogin/chatpage/chat.dart';
 import 'package:wr/afterlogin/ideas.dart';
 import 'package:wr/beforlogin/loginpage.dart';
 import 'package:wr/afterlogin/mainpage.dart';
@@ -59,7 +59,7 @@ class BuilderWidget extends StatelessWidget {
               return MainMenuPage();
             }
             if (state is routerCommentsPage) {
-              return CommentsPage();
+              return ChatPage();
             }
             if (state is routerThrowTheDicePage) {
               return ThrowDicePage();

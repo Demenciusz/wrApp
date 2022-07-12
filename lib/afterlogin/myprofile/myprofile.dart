@@ -21,14 +21,14 @@ class MyProfile extends StatefulWidget {
 
 class _MyProfileState extends State<MyProfile> {
   Future<void> pickIMG() async {}
-  List<String> usersData = [];
+  //List<String> usersData = [];
   Future<String> displayData(String uid) async {
     String? conId;
     await FirebaseFirestore.instance.collection('Users').where('uid', isEqualTo: uid).get().then((snapshot) => snapshot.docs.forEach((element) {
           print('--------------------');
           print(element.reference.id.toString());
           print('-------------------');
-          usersData.add(element.reference.id);
+          //usersData.add(element.reference.id);
           conId = element.reference.id.toString();
         }));
     return conId!;
@@ -61,7 +61,7 @@ class _MyProfileState extends State<MyProfile> {
                         width: 100,
                       );
                     }
-                    return CircularProgressIndicator();
+                    return const CircularProgressIndicator();
                   })),
               TextButton(
                 child: Text('dd'),
