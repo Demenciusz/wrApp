@@ -7,6 +7,7 @@ class UserData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double sizedBoxHeight = 10;
     CollectionReference userData = FirebaseFirestore.instance.collection('Users');
     return FutureBuilder<DocumentSnapshot>(
         future: userData.doc(docId).get(),
@@ -20,9 +21,15 @@ class UserData extends StatelessWidget {
                     'Nazwa: ${data['name']}',
                     style: TextStyle(fontFamily: 'Caslon', fontSize: 30),
                   ),
+                  SizedBox(
+                    height: sizedBoxHeight,
+                  ),
                   Text(
                     'Urodziny: ${data['birthdate']}',
                     style: TextStyle(fontFamily: 'Caslon', fontSize: 30),
+                  ),
+                  SizedBox(
+                    height: sizedBoxHeight,
                   ),
                   Text(
                     'Opis: ',
@@ -37,9 +44,15 @@ class UserData extends StatelessWidget {
                   'Nazwa: ${data['name']}',
                   style: TextStyle(fontFamily: 'Caslon', fontSize: 30),
                 ),
+                SizedBox(
+                  height: sizedBoxHeight,
+                ),
                 Text(
                   'Urodziny: ${data['birthdate']}',
                   style: TextStyle(fontFamily: 'Caslon', fontSize: 30),
+                ),
+                SizedBox(
+                  height: sizedBoxHeight,
                 ),
                 Text('Opis: ${data['description']}', style: TextStyle(fontFamily: 'Caslon', fontSize: 30)),
               ],

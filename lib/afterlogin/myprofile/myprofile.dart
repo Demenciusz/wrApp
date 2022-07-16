@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 //import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wr/afterlogin/drawer.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_st;
@@ -11,6 +12,7 @@ import 'package:wr/afterlogin/myprofile/photostorage.dart';
 import 'package:wr/afterlogin/myprofile/profiledata.dart';
 
 import '../../cubit/scaffoldcubit_cubit.dart';
+import '../../myvariables.dart';
 
 class MyProfile extends StatefulWidget {
   const MyProfile({Key? key}) : super(key: key);
@@ -40,6 +42,8 @@ class _MyProfileState extends State<MyProfile> {
     final FirebaseAuth auth = FirebaseAuth.instance;
     final User? user = auth.currentUser;
     final String uid = user!.uid;
+    double sizedBoxHeight = 10;
+    double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       appBar: AppBar(),
@@ -47,6 +51,9 @@ class _MyProfileState extends State<MyProfile> {
         child: Center(
           child: Column(
             children: [
+              SizedBox(
+                height: sizedBoxHeight,
+              ),
               FutureBuilder(
                   future: photoStorage.displayPhoto(uid),
                   builder: ((context, AsyncSnapshot<String> snapshot) {
@@ -63,7 +70,10 @@ class _MyProfileState extends State<MyProfile> {
                     }
                     return const CircularProgressIndicator();
                   })),
-              TextButton(
+              SizedBox(
+                height: sizedBoxHeight,
+              ),
+              /* TextButton(
                 child: Text('dd'),
                 onPressed: () async {
                   final profilePhoto =
@@ -78,11 +88,27 @@ class _MyProfileState extends State<MyProfile> {
                   }
                 },
               ),
+              SizedBox(
+                height: sizedBoxHeight,
+              ), */
               FutureBuilder(
                   future: displayData(uid),
                   builder: (context, snapshot) {
                     return UserData(docId: snapshot.data.toString());
-                  })
+                  }),
+              SizedBox(
+                height: sizedBoxHeight,
+              ),
+              Container(
+                width: screenWidth * 0.9,
+                decoration: BoxDecoration(color: Colors.grey.shade800, borderRadius: BorderRadius.circular(20)),
+                child: TextButton(
+                    onPressed: () {
+                      BlocProvider.of<ScaffoldcubitCubit>(context, listen: false).editMyProfilePage();
+                      print('tak');
+                    },
+                    child: Text('Edytuj', style: TextStyle(fontFamily: 'Caslon', fontSize: 2.5 * sizedBoxHeight, color: textLoginColor))),
+              )
             ],
           ),
         ),

@@ -17,7 +17,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final birthDateController = TextEditingController();
   final passwordController1 = TextEditingController();
   final passwordController2 = TextEditingController();
-  final FirebaseAuth auth = FirebaseAuth.instance;
+  //final FirebaseAuth auth = FirebaseAuth.instance;
   Future signToApp() async {
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailController.text.trim(), password: passwordController1.text.trim());
@@ -38,7 +38,9 @@ class _RegisterPageState extends State<RegisterPage> {
   Future userProfileData({String? profileNickName, String? profileBirthDate, String? profileEmail, String? uid}) async {
     await FirebaseFirestore.instance
         .collection('Users')
-        .add({'name': profileNickName, 'birthdate': profileBirthDate, 'email': profileEmail, 'uid': uid});
+        .doc(uid)
+        .set({'name': profileNickName, 'birthdate': profileBirthDate, 'email': profileEmail, 'description': ''});
+    //.add({'name': profileNickName, 'birthdate': profileBirthDate, 'email': profileEmail, 'uid': uid});
   }
 
   @override

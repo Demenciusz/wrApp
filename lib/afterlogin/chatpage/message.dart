@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
@@ -27,7 +28,11 @@ class ChatMessage extends StatelessWidget {
             } else
               return Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: [Text(data['messageContent'])],
+                children: [
+                  Container(
+                      decoration: BoxDecoration(color: Colors.red, borderRadius: BorderRadius.all(Radius.circular(20))),
+                      child: Text(data['messageContent']))
+                ],
               );
           } else {
             return Text('Ładowanie');

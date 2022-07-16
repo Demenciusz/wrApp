@@ -98,7 +98,7 @@ class _MainMenuPageState extends State<MainMenuPage> {
                         if (snapshot.hasData) {
                           List<Video> video = snapshot.data!;
                           return Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(10),
                             child: SizedBox(
                               child: ListView.separated(
                                 separatorBuilder: (context, index) => SizedBox(
@@ -116,9 +116,12 @@ class _MainMenuPageState extends State<MainMenuPage> {
                           return const CircularProgressIndicator();
                       }),
                 ),
-                Text(
-                  des,
-                  style: TextStyle(fontSize: 20, fontFamily: 'Caslon'),
+                Padding(
+                  padding: const EdgeInsets.all(14),
+                  child: Text(
+                    des,
+                    style: TextStyle(fontSize: 20, fontFamily: 'Caslon'),
+                  ),
                 )
               ],
             ),

@@ -18,6 +18,7 @@ import 'dart:math';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:bloc/bloc.dart';
 import 'package:wr/cubit/scaffoldcubit_cubit.dart';
+import 'package:wr/afterlogin/myprofile/editmyprofile.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 Future<void> main() async {
@@ -69,6 +70,9 @@ class BuilderWidget extends StatelessWidget {
             }
             if (state is routerIdeasPage) {
               return IdeasPage();
+            }
+            if (state is routerEditMyProfilePage) {
+              return EditMyProfile();
             }
             return MainMenuPage();
           }));

@@ -44,3 +44,10 @@ const List<int> numberOfDices = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const String rollDiceButton = 'Rzuć kośćmi';
 const String numberOfDicesButton = 'Iloma kośćmi rzucić';
 const String diceMean = 'Średnia wartość dla kości:';
+//EDIT
+const String editProfileButton = 'Edytuj profil';
+const String editPhotoButton = 'Zmień zdjęcie';
+const String saveChanges = 'Zapisz zmiany';
+const String alertDialogContentEdit = 'Czy zapisać zmiany?';
+const String alertDialogEdit = 'Uwaga!';
+const String editBackButton = 'Wróć';

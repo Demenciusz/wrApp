@@ -11,4 +11,5 @@ class ScaffoldcubitCubit extends Cubit<ScaffoldcubitState> {
   void throwTheDicePage() => emit(routerThrowTheDicePage());
   void ideasPage() => emit(routerIdeasPage());
   void myProfilePage() => emit(routerMyProfilePage());
+  void editMyProfilePage() => emit(routerEditMyProfilePage());
 }

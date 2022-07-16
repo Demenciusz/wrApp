@@ -14,3 +14,5 @@ class routerThrowTheDicePage extends ScaffoldcubitState {}
 class routerMyProfilePage extends ScaffoldcubitState {}
 
 class routerIdeasPage extends ScaffoldcubitState {}
+
+class routerEditMyProfilePage extends ScaffoldcubitState {}
